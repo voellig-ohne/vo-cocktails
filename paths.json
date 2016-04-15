@@ -1,0 +1,21 @@
+{
+	"dist": {
+		"main": "dist",
+		"script": "all.js"
+	},
+	"script": [
+		"src/js/**/*.js"
+	],
+	"font": [
+		"src/style/fonts/**/*.woff"
+	],
+	"style": {
+		"render": "src/style/main.less",
+		"watch": "src/style/**/*.less"
+	},
+	"template": "src/template/**/*.jade",
+	"image": [
+		"src/images/**/*.{jpg,png}"
+	],
+	"content": "src/content/**/*.md"
+}
