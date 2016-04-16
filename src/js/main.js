@@ -110,6 +110,8 @@ class mixer {
         }
 
         this._mixerPrintScreen.innerHTML = printOutput;
+
+        window.print();
     }
 }
 

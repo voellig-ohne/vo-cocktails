@@ -3,6 +3,10 @@
 		position: relative;
 		display: inline-block;
 
+		@media print {
+			display: none;
+		}
+
 		&:after {				
 			position: absolute;
 		    height: .1em;
