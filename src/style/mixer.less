@@ -1,0 +1,30 @@
+.mixer {
+	&-display {
+		position: relative;
+		display: inline-block;
+
+		&:after {				
+			position: absolute;
+		    height: .1em;
+		    width: 0;
+		    content: '';
+		    display: block;
+		    transition: width 0s;
+			bottom: 0;
+		}
+
+		&--added, &--rejected {
+			&:after {				
+			    width: 100%;
+			    background: #000;
+		    	transition: width .5s;
+			}
+		}
+
+		&--rejected {
+			&:after {
+			    bottom: .5em;
+			}
+		}
+	}
+}

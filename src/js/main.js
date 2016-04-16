@@ -2,10 +2,13 @@ class mixer {
     constructor(ingredients) {
         console.log('foo', ingredients);
 
+        this._mixerDisplay = document.getElementById('mixerDisplay');
         this.originalIngredients = ingredients;
         this.addedIngredients = [[]];
         this.currentIngredient = this._getCurrentIngredient();
         this._addEventHandlers();
+        this._mixerDisplay.innerHTML = this.currentIngredient;
+
     }
 
     addIngredient(ingredient, isAdded) {
@@ -25,15 +28,17 @@ class mixer {
     }
 
     _addCurrentIngredient(add) {
+        const lastIngedient = this.currentIngredient;
+        this.currentIngredient = this._getCurrentIngredient(); 
 
         this.addedIngredients[this.addedIngredients.length - 1].push(
             {
-                name: this.currentIngredient,
+                name: lastIngedient,
                 value: add
             }
         )
 
-        this.currentIngredient = this._getCurrentIngredient(); 
+        this._displayIngredient(lastIngedient, this.currentIngredient, add);
 
         if (!this.originalIngredients[0].length) {
             this.originalIngredients.shift();
@@ -41,11 +46,21 @@ class mixer {
         }
 
         console.log(this.addedIngredients);
-        
+
         if (!this.originalIngredients.length) {
             console.log('all done!');
             return;
         }
+    }
+
+    _displayIngredient(last, current, isAdded) {
+        this._mixerDisplay.classList.add(isAdded ? 'mixer-display--added' : 'mixer-display--rejected');
+
+        setTimeout(() => {
+            this._mixerDisplay.innerHTML = current;
+            this._mixerDisplay.classList.remove('mixer-display--added'); 
+            this._mixerDisplay.classList.remove('mixer-display--rejected'); 
+        }, 1000);
     }
 
     _getCurrentIngredient() {
