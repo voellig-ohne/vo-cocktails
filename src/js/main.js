@@ -1,7 +1,5 @@
 class mixer {
     constructor(ingredients) {
-        console.log('foo', ingredients);
-
         this._mixerDisplay = document.getElementById('mixerDisplay');
         this.originalIngredients = ingredients;
         this.addedIngredients = [[]];
@@ -9,7 +7,6 @@ class mixer {
         this._addEventHandlers();
         this._mixerDisplay.innerHTML = this.currentIngredient;
         this._currentlyChanging = false;
-
     }
 
     addIngredient(ingredient, isAdded) {
@@ -32,40 +29,48 @@ class mixer {
         const lastIngedient = this.currentIngredient;
         this.currentIngredient = this._getCurrentIngredient(); 
 
-        this.addedIngredients[this.addedIngredients.length - 1].push(
-            {
-                name: lastIngedient,
-                value: add
+        if (this.currentIngredient) {
+            this.addedIngredients[this.addedIngredients.length - 1].push(
+                {
+                    name: lastIngedient,
+                    value: add
+                }
+            )
+
+            if (!this.originalIngredients[0].length) {
+                this.originalIngredients.shift();
+                this.addedIngredients.push([]);   
             }
-        )
+        } else {
+            this._print();
+        }
 
         this._displayIngredient(lastIngedient, this.currentIngredient, add);
-
-        if (!this.originalIngredients[0].length) {
-            this.originalIngredients.shift();
-            this.addedIngredients.push([]);
-        }
-
-        if (!this.originalIngredients.length) {
-            console.log('all done!');
-            return;
-        }
     }
 
     _displayIngredient(last, current, isAdded) {
         this._mixerDisplay.classList.add(isAdded ? 'mixer-display--added' : 'mixer-display--rejected');
         this._currentlyChanging = true;
 
-        setTimeout(() => {
-            this._mixerDisplay.innerHTML = current;
+        setTimeout(() => {            
             this._mixerDisplay.classList.remove('mixer-display--added'); 
-            this._mixerDisplay.classList.remove('mixer-display--rejected'); 
-            this._currentlyChanging = false;
+            this._mixerDisplay.classList.remove('mixer-display--rejected');   
+
+            if (current !== undefined) {
+                this._currentlyChanging = false;
+                this._mixerDisplay.innerHTML = current; 
+            } else {
+                this._mixerDisplay.innerHTML = 'dein getränk wird gedruckt, bitte warte.';
+            }
         }, 1000);
     }
 
     _getCurrentIngredient() {
-        return this.originalIngredients[0].shift();
+        return this.originalIngredients[0] ? this.originalIngredients[0].shift() : undefined;
+    }
+
+    _print() {
+        console.log('printing...')
     }
 }
 
@@ -100,4 +105,19 @@ const ingredients = [
     ]
 ]
 
-const voMix = new mixer(ingredients);
+const ingredientsFew = [
+    [
+        'rum',
+        'vodka'
+    ],
+    [
+        'milch'
+    ],
+    [
+        'limetten',
+        'rohrzucker'
+    ]
+]
+
+
+const voMix = new mixer(ingredientsFew);
