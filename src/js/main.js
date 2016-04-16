@@ -8,6 +8,7 @@ class mixer {
         this.currentIngredient = this._getCurrentIngredient();
         this._addEventHandlers();
         this._mixerDisplay.innerHTML = this.currentIngredient;
+        this._currentlyChanging = false;
 
     }
 
@@ -17,11 +18,11 @@ class mixer {
 
     _addEventHandlers() {
         window.addEventListener('keypress', (event) => {
-            if(event.keyCode === 97) {
+            if(event.keyCode === 97 && !this._currentlyChanging) {
                 this._addCurrentIngredient(true);
             }
 
-            if (event.keyCode === 115) {
+            if (event.keyCode === 115 && !this._currentlyChanging) {
                 this._addCurrentIngredient(false);
             }
         });
@@ -45,8 +46,6 @@ class mixer {
             this.addedIngredients.push([]);
         }
 
-        console.log(this.addedIngredients);
-
         if (!this.originalIngredients.length) {
             console.log('all done!');
             return;
@@ -55,11 +54,13 @@ class mixer {
 
     _displayIngredient(last, current, isAdded) {
         this._mixerDisplay.classList.add(isAdded ? 'mixer-display--added' : 'mixer-display--rejected');
+        this._currentlyChanging = true;
 
         setTimeout(() => {
             this._mixerDisplay.innerHTML = current;
             this._mixerDisplay.classList.remove('mixer-display--added'); 
             this._mixerDisplay.classList.remove('mixer-display--rejected'); 
+            this._currentlyChanging = false;
         }, 1000);
     }
 
