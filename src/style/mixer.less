@@ -32,9 +32,41 @@
 		}
 	}
 
+	&-print {
+		@media screen {
+			display: none;
+		}
+	}
+
 	&-ingredient {
 		&--rejected {
 			text-decoration: line-through;
+		}
+	}
+
+	&-count {
+		margin-bottom: 3em;
+		padding-bottom: 2em;
+		border-bottom: dashed black 1px;
+	}
+
+	&-date {
+		margin: 3em 0 2em;
+		padding-top: 3em;
+		border-top: dashed black 1px;
+	}
+
+	&-sign {
+		display: flex;
+		justify-content: center;
+
+		> * {
+			text-align: left;
+			width: 10em;
+			height: 4em;
+			border-bottom: 2px solid black;
+			margin: 1em;
+
 		}
 	}
 }

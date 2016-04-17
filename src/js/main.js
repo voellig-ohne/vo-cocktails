@@ -2,6 +2,8 @@ class mixer {
     constructor(ingredients) {
         this._mixerDisplay = document.getElementById('mixerDisplay');
         this._mixerPrintScreen = document.getElementById('mixerPrintScreen');
+        this._mixerPrintCount = document.getElementById('mixerPrintCount');
+
 
         this.originalIngredients = ingredients;
         this._addEventHandlers();
@@ -106,9 +108,8 @@ class mixer {
             printOutput += '</p>';
         }
 
-        printOutput += '<p>cocktail #' + this.counter + '</p>';
-
         this._mixerPrintScreen.innerHTML = printOutput;
+        this._mixerPrintCount.innerHTML = '<p>cocktail #' + this.counter + '</p>';
 
         window.print();
     }
@@ -176,4 +177,4 @@ const ingredientsFew = [
 ]
 
 
-const voMix = new mixer(ingredientsFew);
+const voMix = new mixer(ingredients);
