@@ -106,6 +106,8 @@ class mixer {
             printOutput += '</p>';
         }
 
+        printOutput += '<p>cocktail #' + this.counter + '</p>';
+
         this._mixerPrintScreen.innerHTML = printOutput;
 
         window.print();
