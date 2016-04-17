@@ -20,11 +20,11 @@ class mixer {
 
     _addEventHandlers() {
         window.addEventListener('keypress', (event) => {
-            if(event.keyCode === 97 && !this._currentlyChanging) {
+            if(event.charCode === 97 && !this._currentlyChanging) {
                 this._addCurrentIngredient(true);
             }
 
-            if (event.keyCode === 115 && !this._currentlyChanging) {
+            if (event.charCode === 115 && !this._currentlyChanging) {
                 this._addCurrentIngredient(false);
             }
         });
