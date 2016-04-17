@@ -4,14 +4,9 @@ class mixer {
         this._mixerPrintScreen = document.getElementById('mixerPrintScreen');
 
         this.originalIngredients = ingredients;
-        this.addedIngredients = [];
         this._addEventHandlers();
-        this._mixerDisplay.innerHTML = this.originalIngredients[0][0];
-        this._currentlyChanging = false;
-        this._pointers = {
-            row: 0,
-            ingredient: 0
-        };
+        this._initVars();
+        this.counter = 0;
     }
 
     addIngredient(ingredient, isAdded) {
@@ -52,6 +47,8 @@ class mixer {
         } else {
             this._displayIngredient(this.currentIngredient, undefined, add);
             this._print();
+            this._reset();
+            this.counter = this.counter + 1;
         }
         this._pointers = this._incrementPointers(this._pointers);
 
@@ -113,6 +110,22 @@ class mixer {
 
         window.print();
     }
+
+    _reset() {
+        setTimeout(() => {
+            this._initVars();
+        }, 5000);
+    }
+
+    _initVars() {
+        this._mixerDisplay.innerHTML = this.originalIngredients[0][0];
+        this.addedIngredients = [];
+        this._pointers = {
+            row: 0,
+            ingredient: 0
+        };
+        this._currentlyChanging = false;
+   }
 }
 
 const ingredients = [
