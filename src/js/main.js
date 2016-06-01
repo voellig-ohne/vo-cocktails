@@ -146,43 +146,25 @@ const ingredients = [
         'rum',
         'vodka',
         'kräuter',
-        'tequila',
-        'korn',
-        '43',
-        'zubrovka',
-        'martini',
-        'gin'
+        'grasovka',
+        'gin',
+        'bunte wolke'
     ],
     [
-        'milch',
-        'orangensaft',
+        'rhabarbersaft',
+        'apfelsaft',
         'tonic',
         'cola',
         'mate',
-        'tomatensaft'
+        'ginger ale',
+        'bitter lemon'
     ],
     [
         'limetten',
-        'rohrzucker',
         'zitronen',
-        'sellerie',
-        'tabasco',
-        'pfeffer',
-        'gurke'
-    ]
-]
-
-const ingredientsFew = [
-    [
-        'rum',
-        'vodka'
-    ],
-    [
-        'milch'
-    ],
-    [
-        'limetten',
-        'rohrzucker'
+        'rohrzucker',
+        'gurke',
+        'minze'
     ]
 ]
 
