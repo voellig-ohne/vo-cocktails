@@ -78,7 +78,7 @@ class mixer {
                 this._currentlyChanging = false;
                 this._mixerDisplay.innerHTML = current;
             } else {
-                this._mixerDisplay.innerHTML = 'dein getränk wird gedruckt, bitte warte.';
+                this._mixerDisplay.innerHTML = 'dein getränk wird gedruckt, <br>bitte warte.';
             }
         }, 1000);
     }
@@ -119,7 +119,7 @@ class mixer {
         }
 
         this._mixerPrintScreen.innerHTML = printOutput;
-        this._mixerPrintCount.innerHTML = '<p>cocktail #' + this.counter + '</p>';
+        this._mixerPrintCount.innerHTML = '<p>mischgetränk #' + this.counter + '</p>';
 
         window.print();
     }
