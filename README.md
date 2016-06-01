@@ -10,8 +10,8 @@ Der Mischgetränkedrucker gibt einen neunschrittigen Prozess zum Zusammenstellen
 
 Involvierte Personen:
 
-* Ein*e **diensthabende*r Barkeeper*in**.
-* Ein*e oder mehrere ein **Konsument*in(nen)**.
+* Ein\*e **diensthabende*r Barkeeper*in**.
+* Ein\*e oder mehrere ein **Konsument*in(nen)**.
 
 §1 Dem Konsumenten werden nach und nach verschiedene Zutaten vorgeschlagen.
 
