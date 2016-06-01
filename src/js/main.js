@@ -16,12 +16,22 @@ class mixer {
     }
 
     _addEventHandlers() {
+
+        const keysYes = [
+            97, 115, 100, 102, 103
+        ];
+
+        const keysNo = [
+            103, 104, 105, 106, 107, 108, 246
+        ];
+
+
         window.addEventListener('keypress', (event) => {
-            if(event.charCode === 97 && !this._currentlyChanging) {
+            if(keysYes.indexOf(event.charCode) > 0 && !this._currentlyChanging) {
                 this._addCurrentIngredient(true);
             }
 
-            if (event.charCode === 115 && !this._currentlyChanging) {
+            if (keysNo.indexOf(event.charCode) > 0 && !this._currentlyChanging) {
                 this._addCurrentIngredient(false);
             }
         });
@@ -60,13 +70,13 @@ class mixer {
         this._mixerDisplay.classList.add(isAdded ? 'mixer-display--added' : 'mixer-display--rejected');
         this._currentlyChanging = true;
 
-        setTimeout(() => {            
-            this._mixerDisplay.classList.remove('mixer-display--added'); 
-            this._mixerDisplay.classList.remove('mixer-display--rejected');   
+        setTimeout(() => {
+            this._mixerDisplay.classList.remove('mixer-display--added');
+            this._mixerDisplay.classList.remove('mixer-display--rejected');
 
             if (current !== undefined) {
                 this._currentlyChanging = false;
-                this._mixerDisplay.innerHTML = current; 
+                this._mixerDisplay.innerHTML = current;
             } else {
                 this._mixerDisplay.innerHTML = 'dein getränk wird gedruckt, bitte warte.';
             }
@@ -87,7 +97,7 @@ class mixer {
         }
         if (this.originalIngredients[pointer.row + 1]) {
             return {
-                row: pointer.row + 1, 
+                row: pointer.row + 1,
                 ingredient: 0
             }
         }
