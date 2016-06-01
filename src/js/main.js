@@ -8,7 +8,7 @@ class mixer {
         this.originalIngredients = ingredients;
         this._addEventHandlers();
         this._initVars();
-        this.counter = 0;
+        this.counter = 1;
     }
 
     addIngredient(ingredient, isAdded) {
