@@ -2,10 +2,7 @@
 	&-display {
 		position: relative;
 		display: inline-block;
-
-		@media print {
-			display: none;
-		}
+		margin-top: -2em;
 
 		&:after {				
 			position: absolute;
@@ -68,5 +65,16 @@
 			margin: 1em;
 
 		}
+	}
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+	@media print {
+		display: none;
 	}
 }
