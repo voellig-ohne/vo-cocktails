@@ -2,8 +2,6 @@
 
 See [here](http://xn--vlligohne-07a.de/projekte/mischgetraenkedrucker/) to check it out in action.
 
----
-
 ## Description (German)
 
 Der Mischgetränkedrucker gibt einen neunschrittigen Prozess zum Zusammenstellen von Mischgetränken vor.
