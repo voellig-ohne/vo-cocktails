@@ -4,7 +4,6 @@ class mixer {
         this._mixerPrintScreen = document.getElementById('mixerPrintScreen');
         this._mixerPrintCount = document.getElementById('mixerPrintCount');
 
-
         this.originalIngredients = ingredients;
         this._addEventHandlers();
         this._initVars();
@@ -16,18 +15,12 @@ class mixer {
     }
 
     _addEventHandlers() {
+        const keysYes = [97, 115, 100, 102, 103];
 
-        const keysYes = [
-            97, 115, 100, 102, 103
-        ];
+        const keysNo = [103, 104, 105, 106, 107, 108, 246];
 
-        const keysNo = [
-            103, 104, 105, 106, 107, 108, 246
-        ];
-
-
-        window.addEventListener('keypress', (event) => {
-            if(keysYes.indexOf(event.charCode) > 0 && !this._currentlyChanging) {
+        window.addEventListener('keypress', event => {
+            if (keysYes.indexOf(event.charCode) > 0 && !this._currentlyChanging) {
                 this._addCurrentIngredient(true);
             }
 
@@ -38,7 +31,6 @@ class mixer {
     }
 
     _addCurrentIngredient(add) {
-
         const lastIngedient = this.currentIngredient;
         this.currentIngredient = this._getCurrentIngredient();
 
@@ -46,16 +38,19 @@ class mixer {
             this.addedIngredients.push([]);
         }
 
-        this.addedIngredients[this._pointers.row][this._pointers.ingredient] =
-            {
-                name: this.currentIngredient,
-                value: add
-            };
+        this.addedIngredients[this._pointers.row][this._pointers.ingredient] = {
+            name: this.currentIngredient,
+            value: add,
+        };
 
-        const nextPointer = this._incrementPointers(this._pointers)
+        const nextPointer = this._incrementPointers(this._pointers);
 
         if (nextPointer) {
-            this._displayIngredient(this.currentIngredient, this.originalIngredients[nextPointer.row][nextPointer.ingredient], add);
+            this._displayIngredient(
+                this.currentIngredient,
+                this.originalIngredients[nextPointer.row][nextPointer.ingredient],
+                add
+            );
         } else {
             this._displayIngredient(this.currentIngredient, undefined, add);
             this._print();
@@ -63,7 +58,6 @@ class mixer {
             this.counter = this.counter + 1;
         }
         this._pointers = this._incrementPointers(this._pointers);
-
     }
 
     _displayIngredient(last, current, isAdded) {
@@ -89,17 +83,17 @@ class mixer {
     }
 
     _incrementPointers(pointer) {
-        if (this.originalIngredients[pointer.row][pointer.ingredient + 1]){
+        if (this.originalIngredients[pointer.row][pointer.ingredient + 1]) {
             return {
                 row: pointer.row,
-                ingredient: pointer.ingredient + 1
-            }
+                ingredient: pointer.ingredient + 1,
+            };
         }
         if (this.originalIngredients[pointer.row + 1]) {
             return {
                 row: pointer.row + 1,
-                ingredient: 0
-            }
+                ingredient: 0,
+            };
         }
     }
 
@@ -109,17 +103,17 @@ class mixer {
         for (let line of this.addedIngredients) {
             printOutput += '<p>';
 
-            for(let ingredient of line) {
-                printOutput += '<span class="mixer-ingredient--'
+            for (let ingredient of line) {
+                printOutput += '<span class="mixer-ingredient--';
                 printOutput += ingredient.value ? 'added' : 'rejected';
-                printOutput += '">' + ingredient.name + '</span>&nbsp;'
+                printOutput += '">' + ingredient.name + '</span>&nbsp;';
             }
 
             printOutput += '</p>';
         }
 
         this._mixerPrintScreen.innerHTML = printOutput;
-        this._mixerPrintCount.innerHTML = '<p>mischgetränk #' + this.counter + '</p>';
+        this._mixerPrintCount.innerHTML = '<p>mischgetränk #' + this.counter + ' zur werkschau 2017</p>';
 
         window.print();
     }
@@ -135,38 +129,16 @@ class mixer {
         this.addedIngredients = [];
         this._pointers = {
             row: 0,
-            ingredient: 0
+            ingredient: 0,
         };
         this._currentlyChanging = false;
-   }
+    }
 }
 
 const ingredients = [
-    [
-        'rum',
-        'vodka',
-        'kräuter',
-        'grasovka',
-        'gin',
-        'bunte wolke'
-    ],
-    [
-        'rhabarbersaft',
-        'apfelsaft',
-        'tonic',
-        'cola',
-        'mate',
-        'ginger ale',
-        'bitter lemon'
-    ],
-    [
-        'limetten',
-        'zitronen',
-        'rohrzucker',
-        'gurke',
-        'minze'
-    ]
-]
-
+    ['rum', 'vodka', 'kräuter', 'grasovka', 'gin', 'bunte wolke'],
+    ['rhabarbersaft', 'apfelsaft', 'tonic', 'cola', 'mate', 'ginger ale', 'bitter lemon'],
+    ['limetten', 'zitronen', 'rohrzucker', 'gurke', 'minze'],
+];
 
 const voMix = new mixer(ingredients);
