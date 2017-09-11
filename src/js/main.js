@@ -136,8 +136,8 @@ class mixer {
 }
 
 const ingredients = [
-    ['rum', 'vodka', 'kräuter', 'grasovka', 'gin', 'bunte wolke'],
-    ['rhabarbersaft', 'apfelsaft', 'tonic', 'cola', 'mate', 'ginger ale', 'bitter lemon'],
+    ['rum', 'vodka', 'becherovka', 'jäger', 'gin', 'berliner luft'],
+    ['rhabarbersaft', 'apfelsaft', 'orangensaft', 'tonic', 'cola', 'mate', 'ginger ale', 'bitter lemon'],
     ['limetten', 'zitronen', 'rohrzucker', 'gurke', 'minze'],
 ];
 
